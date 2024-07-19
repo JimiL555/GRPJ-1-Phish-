@@ -64,25 +64,23 @@ body {
     border-color: #009ffd;
     color: white;
     align-self: center; /* Centering the button within its container */
-    
 }
 
 .button.is-primary:hover {
     background-color: #006fba;
     border-color: #006fba;
-    
 }
 
-.button.is-success {
-    background-color: #23d160;
-    border-color: #23d160;
+.button#play-song-button {
+    background-color: #ed2e6f;
+    border-color: #ed2e6f;
     color: white;
     margin-top: 20px; /* Add some margin for spacing */
 }
 
-.button.is-success:hover {
-    background-color: #20bc56;
-    border-color: #20bc56;
+.button#play-song-button:hover {
+    background-color: #d92663;
+    border-color: #d92663;
 }
 
 #results {
