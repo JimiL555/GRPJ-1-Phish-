@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Today in Phish History</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <section class="section">
+    <div class="container">
+      <h1 class="title">Today in Phish History</h1>
+      <div class="field">
+        <label class="label">Select Date</label>
+        <div class="control">
+          <input id="date-input" class="input" type="date">
+        </div>
+      </div>
+      <div class="control">
+        <button id="search-button" class="button is-primary">Search</button>
+      </div>
+      <div id="results" class="content">
+        <!-- Results will be displayed here -->
+      </div>
+    </div>
+  </section>
+
+  <div id="modal" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      <div class="box">
+        <h2 class="title">Fun Facts & Reviews</h2>
+        <div id="modal-content">
+          <!-- Fun facts and reviews will be displayed here -->
+        </div>
+      </div>
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
