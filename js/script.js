@@ -22,13 +22,18 @@ document.getElementById('search-button').addEventListener('click', async () => {
       resultsDiv.innerHTML = '<p>No setlist found for this date.</p>';
     }
   } catch (error) {
+    console.error('Error:', error);
     resultsDiv.innerHTML = '<p>Error loading data. Please try again.</p>';
   }
 });
 
 document.getElementById('play-song-button').addEventListener('click', () => {
   const audioElement = document.getElementById('designated-song');
-  audioElement.play();
+  if (audioElement.paused) {
+    audioElement.play();
+  } else {
+    audioElement.pause();
+  }
 });
 
 async function fetchSetlist(date) {
@@ -38,8 +43,10 @@ async function fetchSetlist(date) {
       throw new Error('Network response was not ok ' + response.statusText);
     }
     const data = await response.json();
+    console.log('Fetch Setlist Response:', data);
     return data.response.data;
   } catch (error) {
+    console.error('Fetch Setlist Error:', error);
     throw error;
   }
 }
@@ -51,8 +58,10 @@ async function fetchReviews(showid) {
       throw new Error('Network response was not ok ' + response.statusText);
     }
     const data = await response.json();
+    console.log('Fetch Reviews Response:', data);
     return data.data;
   } catch (error) {
+    console.error('Fetch Reviews Error:', error);
     throw error;
   }
 }
@@ -74,6 +83,13 @@ function displayResults(setlistData, reviewsData) {
   }
 
   const setlist = setlistData[0];
+  console.log('Setlist:', setlist);
+
+  if (!setlist.setlistdata) {
+    resultsDiv.innerHTML = '<p>Invalid setlist data format.</p>';
+    return;
+  }
+
   const songs = parseSetlistData(setlist.setlistdata);
   resultsDiv.innerHTML = `
     <h2 class="title">${setlist.venue || 'Unknown Venue'} - ${setlist.showdate}</h2>
@@ -95,6 +111,7 @@ function showModal(reviewsData) {
     modalContent.innerHTML = '<p>No reviews available.</p>';
   } else {
     modalContent.innerHTML = reviewsData.map(review => {
+      console.log('Review:', review);  // Log each review to see its structure
       return `<p>${review.review_text || 'No review text available'}</p>`;
     }).join('');
   }
