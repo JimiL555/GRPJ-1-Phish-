@@ -1,44 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Today in Phish History</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
-  <link rel="stylesheet" href="css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Today in Phish History</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
 </head>
 <body>
-  <section class="section">
-    <div class="container">
-      <h1 class="title">Today in Phish History</h1>
-      <div class="field">
-        <label class="label">Select Date</label>
-        <div class="control">
-          <input id="date-input" class="input" type="date">
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    Today in Phish History
+                </h1>
+                <h2 class="subtitle">
+                    Discover Phish setlists and reviews for any date
+                </h2>
+            </div>
         </div>
-      </div>
-      <div class="control">
-        <button id="search-button" class="button is-primary">Search</button>
-      </div>
-      <div id="results" class="content">
-        <!-- Results will be displayed here -->
-      </div>
-    </div>
-  </section>
-
-  <div id="modal" class="modal">
-    <div class="modal-background"></div>
-    <div class="modal-content">
-      <div class="box">
-        <h2 class="title">Fun Facts & Reviews</h2>
-        <div id="modal-content">
-          <!-- Fun facts and reviews will be displayed here -->
+    </section>
+    
+    <section class="section">
+        <div class="container">
+            <div class="box">
+                <div class="field">
+                    <label class="label" for="date-input">Select Date</label>
+                    <div class="control">
+                        <input class="input" type="date" id="date-input">
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <button class="button is-primary" id="search-button">Search</button>
+                    </div>
+                </div>
+            </div>
+            <div id="results" class="box"></div>
         </div>
-      </div>
-    </div>
-    <button class="modal-close is-large" aria-label="close"></button>
-  </div>
+    </section>
 
-  <script src="js/script.js"></script>
+    <div class="modal" id="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Fun Facts & Reviews</p>
+                <button class="delete modal-close" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body" id="modal-content">
+                <!-- Content will be dynamically inserted here -->
+            </section>
+            <footer class="modal-card-foot">
+                <button class="button modal-close">Close</button>
+            </footer>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
 </body>
 </html>

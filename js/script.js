@@ -108,7 +108,10 @@ function showModal(reviewsData) {
   }
   modal.classList.add('is-active');
 
-  document.querySelector('.modal-close').addEventListener('click', () => {
-    modal.classList.remove('is-active');
+  const closeModalButtons = document.querySelectorAll('.modal-close');
+  closeModalButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      modal.classList.remove('is-active');
+    });
   });
 }

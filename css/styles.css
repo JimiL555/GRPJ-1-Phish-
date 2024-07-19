@@ -1,12 +1,44 @@
+/* styles.css */
+
+/* General Styles */
 body {
-    padding-top: 50px;
-  }
-  
-  #results {
-    margin-top: 20px;
-  }
-  
-  .modal-content {
-    width: 80%;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+}
+
+.hero {
+    background: linear-gradient(to right, #009ffd, #2a2a72);
+    color: white;
+}
+
+.section {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.box {
+    background: white;
+    padding: 1.5rem;
+    box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1);
+    border-radius: 5px;
+}
+
+.button.is-primary {
+    background-color: #009ffd;
+    border-color: #009ffd;
+    color: white;
+}
+
+.button.is-primary:hover {
+    background-color: #006fba;
+    border-color: #006fba;
+}
+
+#results {
+    margin-top: 2rem;
+}
+
+.modal-card {
+    max-width: 600px;
     margin: auto;
-  }
+}
