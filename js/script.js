@@ -1,3 +1,5 @@
+// script.js
+
 const apiKeyPhishNet = 'BABBB392A004EB644BF9';
 
 document.getElementById('search-button').addEventListener('click', async () => {
@@ -12,19 +14,21 @@ document.getElementById('search-button').addEventListener('click', async () => {
 
   try {
     const setlistData = await fetchSetlist(date);
-    console.log('Setlist Data:', setlistData);
     if (setlistData && setlistData.length > 0) {
       const showid = setlistData[0].showid;
       const reviewsData = await fetchReviews(showid);
-      console.log('Reviews Data:', reviewsData);
       displayResults(setlistData, reviewsData);
     } else {
       resultsDiv.innerHTML = '<p>No setlist found for this date.</p>';
     }
   } catch (error) {
-    console.error('Error:', error);
     resultsDiv.innerHTML = '<p>Error loading data. Please try again.</p>';
   }
+});
+
+document.getElementById('play-song-button').addEventListener('click', () => {
+  const audioElement = document.getElementById('designated-song');
+  audioElement.play();
 });
 
 async function fetchSetlist(date) {
@@ -34,10 +38,8 @@ async function fetchSetlist(date) {
       throw new Error('Network response was not ok ' + response.statusText);
     }
     const data = await response.json();
-    console.log('Fetch Setlist Response:', data);
     return data.response.data;
   } catch (error) {
-    console.error('Fetch Setlist Error:', error);
     throw error;
   }
 }
@@ -49,10 +51,8 @@ async function fetchReviews(showid) {
       throw new Error('Network response was not ok ' + response.statusText);
     }
     const data = await response.json();
-    console.log('Fetch Reviews Response:', data);
-    return data.data; // Correctly accessing the data property
+    return data.data;
   } catch (error) {
-    console.error('Fetch Reviews Error:', error);
     throw error;
   }
 }
@@ -74,13 +74,6 @@ function displayResults(setlistData, reviewsData) {
   }
 
   const setlist = setlistData[0];
-  console.log('Setlist:', setlist);
-
-  if (!setlist.setlistdata) {
-    resultsDiv.innerHTML = '<p>Invalid setlist data format.</p>';
-    return;
-  }
-
   const songs = parseSetlistData(setlist.setlistdata);
   resultsDiv.innerHTML = `
     <h2 class="title">${setlist.venue || 'Unknown Venue'} - ${setlist.showdate}</h2>
@@ -102,7 +95,6 @@ function showModal(reviewsData) {
     modalContent.innerHTML = '<p>No reviews available.</p>';
   } else {
     modalContent.innerHTML = reviewsData.map(review => {
-      console.log('Review:', review);  // Log each review to see its structure
       return `<p>${review.review_text || 'No review text available'}</p>`;
     }).join('');
   }

@@ -73,6 +73,18 @@ body {
     
 }
 
+.button.is-success {
+    background-color: #23d160;
+    border-color: #23d160;
+    color: white;
+    margin-top: 20px; /* Add some margin for spacing */
+}
+
+.button.is-success:hover {
+    background-color: #20bc56;
+    border-color: #20bc56;
+}
+
 #results {
     margin-top: -3rem;  /* Adjust this value as needed */
     text-align: center;
