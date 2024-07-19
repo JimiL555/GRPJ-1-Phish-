@@ -60,7 +60,7 @@ async function fetchReviews(showid) {
 function parseSetlistData(setlistHtml) {
   const tempDiv = document.createElement('div');
   tempDiv.innerHTML = setlistHtml;
-  const songs = [...tempDiv.querySelectorAll('.setlist > p')].map(p => p.textContent.trim());
+  const songs = [...tempDiv.querySelectorAll('p')].map(p => p.textContent.trim());
   return songs;
 }
 
